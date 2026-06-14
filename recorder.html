@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSK Speaking Recorder</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    .question {
+        background: #f5f5f5;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #status {
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    audio {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    #downloadLink {
+        display: none;
+        margin-top: 20px;
+        display: inline-block;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>HSK Speaking Practice</h1>
+
+<div class="question">
+    <h2>Lesson 7: 你怎么去学校？</h2>
+
+    <p><strong>Task:</strong></p>
+
+    <p>
+        请回答下面的问题：<br>
+        <strong>你怎么去学校？为什么？</strong>
+    </p>
+
+    <p>
+        Qǐng huídá xiàmiàn de wèntí:<br>
+        <em>Nǐ zěnme qù xuéxiào? Wèishénme?</em>
+    </p>
+
+    <p>
+        Please answer the question:<br>
+        <em>How do you go to school? Why?</em>
+    </p>
+
+    <p><strong>Example:</strong></p>
+
+    <p>
+        我坐公共汽车去学校。<br>
+        因为学校离我家很远，所以我坐公共汽车。
+    </p>
+</div>
+
+<button id="startBtn">🎤 Start Recording</button>
+<button id="stopBtn" disabled>⏹️ Stop Recording</button>
+<button id="resetBtn">🔄 Record Again</button>
+
+<div id="status">
+    Ready to record.
+</div>
+
+<audio id="audioPlayer" controls></audio>
+
+<br>
+
+<a id="downloadLink">
+    💾 Download Recording
+</a>
+
+<script>
+
+let mediaRecorder;
+let audioChunks = [];
+let audioBlob;
+let audioURL;
+
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const status = document.getElementById("status");
+const audioPlayer = document.getElementById("audioPlayer");
+const downloadLink = document.getElementById("downloadLink");
+
+startBtn.addEventListener("click", async () => {
+
+    try {
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+            audio: true
+        });
+
+        mediaRecorder = new MediaRecorder(stream);
+
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = () => {
+
+            audioBlob = new Blob(audioChunks, {
+                type: "audio/webm"
+            });
+
+            audioURL = URL.createObjectURL(audioBlob);
+
+            audioPlayer.src = audioURL;
+
+            const fileName =
+                "HSK_Lesson7_" +
+                new Date().toISOString().replace(/[:.]/g, "-") +
+                ".webm";
+
+            downloadLink.href = audioURL;
+            downloadLink.download = fileName;
+            downloadLink.style.display = "inline-block";
+
+            status.textContent =
+                "Recording complete. You can listen or download your answer.";
+        };
+
+        mediaRecorder.start();
+
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+
+        status.textContent = "Recording...";
+
+    } catch (error) {
+
+        status.textContent =
+            "Microphone access denied. Please allow microphone access.";
+
+        console.error(error);
+    }
+});
+
+stopBtn.addEventListener("click", () => {
+
+    mediaRecorder.stop();
+
+    mediaRecorder.stream.getTracks().forEach(track => track.stop());
+
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+});
+
+resetBtn.addEventListener("click", () => {
+
+    audioPlayer.src = "";
+
+    downloadLink.style.display = "none";
+
+    status.textContent = "Ready to record.";
+
+    audioChunks = [];
+    audioBlob = null;
+
+});
+
+</script>
+
+</body>
+</html>
