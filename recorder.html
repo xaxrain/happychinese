@@ -51,6 +51,20 @@
 </head>
 
 <body>
+    <button onclick="testMic()">Test Microphone</button>
+
+<script>
+async function testMic() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        alert("Microphone works!");
+        stream.getTracks().forEach(track => track.stop());
+    } catch (err) {
+        alert(err.name + ": " + err.message);
+        console.error(err);
+    }
+}
+</script>
 
 <h1>HSK Speaking Practice</h1>
 
