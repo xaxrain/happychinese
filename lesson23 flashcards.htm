@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chinese Flashcards</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f5f7fb;
+      font-family: Arial, sans-serif;
+    }
+
+    .card-container {
+      perspective: 1200px;
+      width: 320px;
+      height: 420px;
+      margin: auto;
+    }
+
+    .flashcard {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+    }
+
+    .flashcard.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      padding: 20px;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .word {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .pinyin {
+      font-size: 18px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .title {
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2 class="title">Happy Chinese Flashcards</h2>
+
+<div class="card-container" onclick="flipCard()">
+  <div class="flashcard" id="flashcard">
+
+    <!-- FRONT -->
+    <div class="side front">
+      <img id="cardImage" src="" alt="card image">
+    </div>
+
+    <!-- BACK -->
+    <div class="side back">
+      <div class="word" id="cardWord"></div>
+      <div class="pinyin" id="cardPinyin"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="text-center mt-4">
+  <button class="btn btn-secondary me-2" onclick="prevCard()">Previous</button>
+  <button class="btn btn-primary" onclick="nextCard()">Next</button>
+</div>
+
+<script>
+  // 📚 Flashcard data
+  const cards = [
+    { word: "怎么", pinyin: "zěn me", img: "https://picsum.photos/400?random=1" },
+    { word: "坐", pinyin: "zuò", img: "https://picsum.photos/400?random=2" },
+    { word: "汽车", pinyin: "qì chē", img: "https://picsum.photos/400?random=3" },
+    { word: "汽车站", pinyin: "qì chē zhàn", img: "https://picsum.photos/400?random=4" },
+    { word: "开车", pinyin: "kāi chē", img: "https://picsum.photos/400?random=5" },
+    { word: "加拿大", pinyin: "jiā ná dà", img: "https://picsum.photos/400?random=6" },
+    { word: "澳大利亚", pinyin: "ào dà lì yà", img: "https://picsum.photos/400?random=7" },
+    { word: "广州", pinyin: "guǎng zhōu", img: "https://picsum.photos/400?random=8" }
+  ];
+
+  let index = 0;
+
+  // 🔄 Load card
+  function loadCard() {
+    document.getElementById("cardImage").src = cards[index].img;
+    document.getElementById("cardWord").innerText = cards[index].word;
+    document.getElementById("cardPinyin").innerText = cards[index].pinyin;
+
+    document.getElementById("flashcard").classList.remove("flipped");
+  }
+
+  // 🔁 Flip animation
+  function flipCard() {
+    const card = document.getElementById("flashcard");
+
+    card.style.transform = "scale(0.98)";
+
+    setTimeout(() => {
+      card.classList.toggle("flipped");
+      card.style.transform = "";
+    }, 80);
+  }
+
+  // ⏭ Next card
+  function nextCard() {
+    index = (index + 1) % cards.length;
+    loadCard();
+  }
+
+  // ⏮ Previous card
+  function prevCard() {
+    index = (index - 1 + cards.length) % cards.length;
+    loadCard();
+  }
+
+  // init
+  loadCard();
+</script>
+
+</body>
+</html>
