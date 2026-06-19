@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuaile Hanyu Lesson 1 Flashcards</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcf6f6; 
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: rgb(188, 122, 132);
+            margin-bottom: 5px;
+        }
+        p.instructions {
+            font-size: 1.1rem;
+            color: rgb(150, 90, 100);
+            margin-top: 0;
+        }
+        .game-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        /* ---- FLASHCARD 3D FLIP EFFECT ---- */
+        .flashcard-wrapper {
+            perspective: 1000px;
+            width: 100%;
+            height: 200px;
+            margin: 20px 0;
+        }
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 15px;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+        /* Front Side (Pink) */
+        .card-front {
+            background-color: #fdf2f4;
+            border: 3px solid #f3d1d6;
+            color: #333;
+        }
+        /* Back Side (Blue) */
+        .card-back {
+            background-color: #e0f2fe;
+            border: 3px solid #bae6fd;
+            color: #0369a1;
+            transform: rotateY(180deg);
+        }
+
+        /* ---- CONTROLS & UTILITIES ---- */
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+        #progress {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: rgb(150, 90, 100);
+        }
+        button {
+            background-color: rgb(188, 122, 132); 
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: rgb(150, 90, 100);
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        #win-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f9ff;
+            border: 2px dashed #0284c7;
+            border-radius: 10px;
+            color: #0369a1;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>快乐汉语 2-1 Flashcards!</h1>
+    <p class="instructions">Click the card to flip and reveal the meaning!</p>
+
+    <div class="game-container">
+        <div id="deck-view">
+            <div class="flashcard-wrapper">
+                <div class="flashcard" id="card" onclick="flipCard()">
+                    <div class="card-face card-front" id="card-front">Loading...</div>
+                    <div class="card-face card-back" id="card-back">Loading...</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="prev-btn" onclick="prevCard()">Previous</button>
+                <span id="progress">1 / 5</span>
+                <button id="next-btn" onclick="nextCard()">Next</button>
+            </div>
+        </div>
+
+        <div id="win-message">
+            🎉 Review Complete! You've gone through all the words! 🎉 <br>
+            <button onclick="resetDeck()">Restart Deck</button>
+        </div>
+    </div>
+
+    <script>
+        const vocabulary = [
+            { id: 1, zh: "谁 (shéi)", en: "Who" },
+            { id: 2, zh: "他 (tā)", en: "He / Him" },
+            { id: 3, zh: "她 (tā)", en: "She / Her" },
+            { id: 4, zh: "同学 (tóngxué)", en: "Classmate" },
+            { id: 5, zh: "朋友 (péngyou)", en: "Friend" }
+        ];
+
+        let deck = [];
+        let currentIndex = 0;
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function initDeck() {
+            // Shuffle cards so it's a new challenge each time
+            deck = shuffle([...vocabulary]);
+            currentIndex = 0;
+            
+            document.getElementById('deck-view').style.display = 'block';
+            document.getElementById('win-message').style.display = 'none';
+            
+            showCard();
+        }
+
+        function showCard() {
+            const cardElement = document.getElementById('card');
+            // Unflip card before updating content
+            cardElement.classList.remove('flipped');
+
+            // Timeout ensures text updates while the card is face-down
+            setTimeout(() => {
+                document.getElementById('card-front').innerText = deck[currentIndex].zh;
+                document.getElementById('card-back').innerText = deck[currentIndex].en;
+                document.getElementById('progress').innerText = `${currentIndex + 1} / ${deck.length}`;
+                
+                // Update button states
+                document.getElementById('prev-btn').disabled = currentIndex === 0;
+                document.getElementById('next-btn').innerText = currentIndex === deck.length - 1 ? "Finish" : "Next";
+            }, cardElement.classList.contains('flipped') ? 150 : 0);
+        }
+
+        function flipCard() {
+            document.getElementById('card').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            if (currentIndex < deck.length - 1) {
+                currentIndex++;
+                showCard();
+            } else {
+                // Reached the end of the deck
+                document.getElementById('deck-view').style.display = 'none';
+                document.getElementById('win-message').style.display = 'block';
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showCard();
+            }
+        }
+
+        function resetDeck() {
+            initDeck();
+        }
+
+        // Initialize on load
+        initDeck();
+    </script>
+</body>
+</html>
