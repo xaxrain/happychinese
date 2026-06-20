@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuaile Hanyu Lesson 1 Match Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcf6f6; /* Soft light pinkish/white background */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            color: rgb(188, 122, 132);
+            margin-bottom: 5px;
+        }
+        p.instructions {
+            font-size: 1.1rem;
+            color: rgb(150, 90, 100);
+            margin-top: 0;
+        }
+        .game-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .columns {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .column {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        /* ---- UPDATED CARD STYLES TO PINK ---- */
+        .card {
+            background-color: #fdf2f4; /* Very soft pastel pink background */
+            border: 2px solid #f3d1d6; /* Subtle pink border */
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            background-color: #fbcdd4; /* Slightly deeper pink when hovered */
+            border-color: rgb(188, 122, 132);
+        }
+        .card.selected {
+            background-color: rgb(188, 122, 132); /* Solid theme pink when selected */
+            color: white;
+            border-color: rgb(150, 90, 100);
+        }
+        .card.matched {
+            background-color: #96dcea;
+            border-color: #86efac;
+            color: #166534;
+            cursor: default;
+            transform: none;
+            opacity: 0.7;
+        }
+        #score-board {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: rgb(150, 90, 100);
+        }
+        #win-message {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #dcfce7;
+            border: 2px dashed #4ade80;
+            border-radius: 10px;
+            color: #0284c7;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        button {
+            background-color: rgb(188, 122, 132); /* Fixed missing semicolon here */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: rgb(150, 90, 100);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>快乐汉语 2-1 Matching Game!</h1>
+    <p class="instructions">Click a Chinese word, then click its English meaning to match them!</p>
+
+    <div class="game-container">
+        <div class="columns">
+            <div class="column" id="chinese-col"></div>
+            <div class="column" id="english-col"></div>
+        </div>
+
+        <div id="score-board">Matches: <span id="match-count">0</span> / 5</div>
+        <div id="win-message">🎉 Awesome Job! You mastered Lesson 1! 🎉 <br><button onclick="resetGame()">Play Again</button></div>
+    </div>
+
+    <script>
+        const vocabulary = [
+            { id: 1, zh: "谁 (shéi)", en: "Who" },
+            { id: 2, zh: "他 (tā)", en: "He / Him" },
+            { id: 3, zh: "她 (tā)", en: "She / Her" },
+            { id: 4, zh: "同学 (tóngxué)", en: "Classmate" },
+            { id: 5, zh: "朋友 (péngyou)", en: "Friend" }
+        ];
+
+        let selectedChinese = null;
+        let selectedEnglish = null;
+        let matches = 0;
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function initGame() {
+            const chineseCol = document.getElementById('chinese-col');
+            const englishCol = document.getElementById('english-col');
+            const winMessage = document.getElementById('win-message');
+            const matchCount = document.getElementById('match-count');
+            
+            chineseCol.innerHTML = '';
+            englishCol.innerHTML = '';
+            winMessage.style.display = 'none';
+            matches = 0;
+            matchCount.innerText = matches;
+            selectedChinese = null;
+            selectedEnglish = null;
+
+            const shuffledChinese = shuffle([...vocabulary]);
+            const shuffledEnglish = shuffle([...vocabulary]);
+
+            shuffledChinese.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerText = item.zh;
+                card.dataset.id = item.id;
+                card.onclick = () => selectCard(card, 'zh');
+                chineseCol.appendChild(card);
+            });
+
+            shuffledEnglish.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerText = item.en;
+                card.dataset.id = item.id;
+                card.onclick = () => selectCard(card, 'en');
+                englishCol.appendChild(card);
+            });
+        }
+
+        function selectCard(card, type) {
+            if (card.classList.contains('matched')) return;
+
+            if (type === 'zh') {
+                if (selectedChinese) selectedChinese.classList.remove('selected');
+                selectedChinese = card;
+                card.classList.add('selected');
+            } else {
+                if (selectedEnglish) selectedEnglish.classList.remove('selected');
+                selectedEnglish = card;
+                card.classList.add('selected');
+            }
+
+            checkMatch();
+        }
+
+        function checkMatch() {
+            if (selectedChinese && selectedEnglish) {
+                if (selectedChinese.dataset.id === selectedEnglish.dataset.id) {
+                    selectedChinese.classList.remove('selected');
+                    selectedEnglish.classList.remove('selected');
+                    selectedChinese.classList.add('matched');
+                    selectedEnglish.classList.add('matched');
+                    
+                    matches++;
+                    document.getElementById('match-count').innerText = matches;
+                    
+                    selectedChinese = null;
+                    selectedEnglish = null;
+
+                    if (matches === vocabulary.length) {
+                        document.getElementById('win-message').style.display = 'block';
+                    }
+                } else {
+                    const zhCard = selectedChinese;
+                    const enCard = selectedEnglish;
+                    setTimeout(() => {
+                        zhCard.classList.remove('selected');
+                        enCard.classList.remove('selected');
+                    }, 400);
+                    selectedChinese = null;
+                    selectedEnglish = null;
+                }
+            }
+        }
+
+        function resetGame() {
+            initGame();
+        }
+
+        initGame();
+    </script>
+</body>
+</html>
