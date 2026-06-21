@@ -15,7 +15,7 @@
         margin: 0;
     }
 
-    h1 {
+    dragh1 {
         color: rgb(188, 122, 132);
         margin-bottom: 5px;
     }
@@ -98,7 +98,7 @@
 
 <body>
 
-<h1>句子排序 Sentence Builder</h1>
+<h1 class="dragh1">句子排序 Sentence Builder</h1>
 <p class="instructions">Drag the words to form a correct sentence</p>
 
 <div class="game-container">
@@ -177,7 +177,7 @@ function checkAnswer() {
 
     words.forEach(word => sentence += word.textContent);
 
-    if (sentence === "这是你哥哥吗") {
+    if (sentence === "昨天下班回到家已经十点了") {
         result.textContent = "✅ Correct!";
         result.style.color = "green";
     } else {
