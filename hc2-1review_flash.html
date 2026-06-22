@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HC 2-1 Flashcards</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans SC", "Segoe UI", sans-serif;
+    background-color: #fcf6f6;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    color: rgb(188, 122, 132);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 5px;
+}
+
+.instructions {
+    color: rgb(150, 90, 100);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#progress {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: rgb(150, 90, 100);
+}
+
+.game-container {
+    max-width: 500px;
+    margin: 20px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.flashcard-wrapper {
+    perspective: 1000px;
+    height: clamp(140px, 35vw, 200px); 
+    margin-bottom: 25px;
+}
+
+.flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 20px;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background: #fdf2f4;
+    border: 3px solid #f3d1d6;
+}
+
+.card-back {
+    background: #e0f2fe;
+    border: 3px solid #bae6fd;
+    color: #0369a1;
+    transform: rotateY(180deg);
+}
+
+/* Row layout for desktop/tablet screens */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    flex: 1;
+    background-color: rgb(188, 122, 132);
+    color: white;
+    border: none;
+    padding: 12px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: rgb(150, 90, 100);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+#win-message {
+    display: none;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* 📱 Mobile Specific Styles */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .game-container {
+        padding: 20px 15px;
+        margin: 10px auto;
+    }
+
+    /* Switches button container from row layout to a single column */
+    .controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px 10px; /* Marginally larger touch target for thumbs */
+        font-size: 1rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h1>HC 2-1 Flashcards</h1>
+<p class="instructions">Click the card to flip it</p>
+
+<div class="game-container">
+    <div id="deck-view">
+        <span id="progress"></span>
+
+        <div class="flashcard-wrapper">
+            <div class="flashcard" id="card" onclick="flipCard()">
+                <div class="card-face card-front" id="card-front"></div>
+                <div class="card-face card-back" id="card-back"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="prev-btn" onclick="prevCard()">Previous</button>
+            <button onclick="toggleLanguage()">Swap Language 🔄</button>
+            <button id="next-btn" onclick="nextCard()">Next</button>
+        </div>
+    </div>
+
+    <div id="win-message">
+        🎉 Review Complete! 🎉<br><br>
+        <button onclick="resetDeck()">Restart</button>
+    </div>
+</div>
+
+<script>
+const vocabulary = [
+    { zh: "你 (nǐ)", en: "You" },
+    { zh: "我 (wǒ)", en: "I / Me" },
+    { zh: "她 (tā)", en: "She / Her" },
+    { zh: "他 (tā)", en: "He / Him" },
+    { zh: "我们 (wǒmen)", en: "We / Us" },
+    { zh: "你们 (nǐmen)", en: "You (plural)" },
+    { zh: "她们 (tāmen)", en: "They / Them (female)" },
+    { zh: "他们 (tāmen)", en: "They / Them (male/mixed)" },
+    { zh: "我的 (wǒ de)", en: "My / Mine" },
+    { zh: "你的 (nǐ de)", en: "Your / Yours" },
+    { zh: "他的 (tā de)", en: "His" },
+    { zh: "我们的 (wǒmen de)", en: "Our / Ours" },
+    { zh: "你们的 (nǐmen de)", en: "Your / Yours (plural)" },
+    { zh: "他们的 (tāmen de)", en: "Their / Theirs" }
+];
+
+let deck = [];
+let currentIndex = 0;
+let showChineseFirst = true;
+
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function initDeck() {
+    deck = shuffle([...vocabulary]);
+    currentIndex = 0;
+
+    document.getElementById('deck-view').style.display = 'block';
+    document.getElementById('win-message').style.display = 'none';
+
+    showCard();
+}
+
+function showCard() {
+    const card = document.getElementById('card');
+    card.classList.remove('flipped');
+
+    if (showChineseFirst) {
+        document.getElementById('card-front').innerText = deck[currentIndex].zh;
+        document.getElementById('card-back').innerText = deck[currentIndex].en;
+    } else {
+        document.getElementById('card-front').innerText = deck[currentIndex].en;
+        document.getElementById('card-back').innerText = deck[currentIndex].zh;
+    }
+
+    document.getElementById('progress').innerText =
+        `${currentIndex + 1} / ${deck.length}`;
+
+    document.getElementById('prev-btn').disabled = currentIndex === 0;
+
+    document.getElementById('next-btn').innerText =
+        currentIndex === deck.length - 1 ? "Finish" : "Next";
+}
+
+function flipCard() {
+    document.getElementById('card').classList.toggle('flipped');
+}
+
+function nextCard() {
+    if (currentIndex < deck.length - 1) {
+        currentIndex++;
+        showCard();
+    } else {
+        document.getElementById('deck-view').style.display = 'none';
+        document.getElementById('win-message').style.display = 'block';
+    }
+}
+
+function prevCard() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        showCard();
+    }
+}
+
+function resetDeck() {
+    initDeck();
+}
+
+function toggleLanguage() {
+    showChineseFirst = !showChineseFirst;
+    showCard();
+}
+
+initDeck();
+</script>
+
+</body>
+</html>
