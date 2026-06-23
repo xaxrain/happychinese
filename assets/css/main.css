@@ -111,6 +111,13 @@ main h2.subtitle {
     box-shadow: 0 2px 5px rgba(188, 122, 132, 0.05);
 }
 
+.pagebody-800 {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;     /* Centers the content */
+  padding: 0 20px;    /* Prevents content from touching mobile screen edges */
+  box-sizing: border-box; 
+}
 /* PHP Email Form Messages
 ------------------------------*/
 .php-email-form .error-message {
