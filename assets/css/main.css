@@ -96,7 +96,7 @@ h2 {
       margin-bottom: 5px;
 }
 
-main h2 {
+main h2.subtitle {
     font-family: 'Poppins', 'Raleway', sans-serif;
     color: rgb(150, 90, 100);
     font-weight: 600;
@@ -2296,12 +2296,9 @@ section,
 # General Styling & Overrides
 --------------------------------------------------------------*/
 body {
-  color: var(--default-color);
+color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
   line-height: 1.6;
 }
 
