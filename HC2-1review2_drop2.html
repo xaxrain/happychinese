@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HC2-1review2</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #fcf6f6; 
+        color: #333;
+        text-align: center;
+        padding: 20px;
+        margin: 0;
+    }
+
+    h1 {
+        color: rgb(188, 122, 132);
+        margin-bottom: 5px;
+    }
+
+    p.instructions {
+        font-size: 1.1rem;
+        color: rgb(150, 90, 100);
+        margin-top: 0;
+    }
+
+    .game-container {
+        max-width: 500px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Word tiles */
+    .word {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        background-color: #fdf2f4;
+        border: 3px solid #f3d1d6;
+        border-radius: 10px;
+        cursor: pointer; /* Changed to pointer for mobile-friendly clicking */
+        font-weight: bold;
+        position: relative;
+    }
+
+    /* Pinyin tooltip */
+    .word:hover::after {
+        content: attr(data-pinyin);
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #e0f2fe;
+        color: #0369a1;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 10;
+    }
+
+    /* Drop area workspace */
+    .dropzone {
+        min-height: 70px;
+        border: 2px dashed #bae6fd;
+        background-color: #f0f9ff;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    button {
+        background-color: rgb(188, 122, 132); 
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    button:hover {
+        background-color: rgb(150, 90, 100);
+    }
+
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>句子排序 Sentence Builder</h1>
+<p class="instructions">Click the words to form a correct sentence</p>
+
+<div class="game-container">
+
+    <div id="wordBank"></div>
+
+    <div class="dropzone" id="dropzone"></div>
+
+    <button onclick="checkAnswer()">Check</button>
+    <button onclick="resetGame()">Reset</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+// Master Data set in the target correct order
+
+
+const wordsData = [
+    { text: "我", pinyin: "wǒ", english: "I" },
+    { text: "爱", pinyin: "ài", english: "love" },
+    { text: "我", pinyin: "wǒ", english: "I" },
+    { text: "的", pinyin: "de", english: "possessive particle" },
+    { text: "家", pinyin: "jiā", english: "family / home" },
+    { text: "人", pinyin: "rén", english: "person / people" }
+];
+
+
+
+// Dynamic variable generating the target sentence directly from wordsData
+const correctSentence = wordsData.map(item => item.text).join("");
+
+// Shuffle
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+function handleWordClick(div) {
+    const bank = document.getElementById("wordBank");
+    const dropzone = document.getElementById("dropzone");
+
+    // If the word tile is currently in the bank, move it to the workspace dropzone
+    if (div.parentNode === bank) {
+        dropzone.appendChild(div);
+    } else {
+        // Otherwise, return it back to the selection bank
+        bank.appendChild(div);
+    }
+}
+
+function loadWords() {
+    const bank = document.getElementById("wordBank");
+    const dropzone = document.getElementById("dropzone");
+
+    bank.innerHTML = "";
+    dropzone.innerHTML = ""; 
+
+    let shuffled = shuffle([...wordsData]);
+
+    shuffled.forEach(item => {
+        let div = document.createElement("div");
+        div.className = "word";
+        div.textContent = item.text;
+        div.setAttribute("data-pinyin", item.pinyin);
+
+        // Click handler handles switching workspaces seamlessly
+        div.addEventListener("click", () => handleWordClick(div));
+
+        bank.appendChild(div);
+    });
+
+    document.getElementById("result").textContent = "";
+}
+
+// Check answer
+function checkAnswer() {
+    const words = document.querySelectorAll("#dropzone .word");
+    const result = document.getElementById("result");
+    let currentSentenceOrder = "";
+
+    words.forEach(word => currentSentenceOrder += word.textContent);
+
+    if (currentSentenceOrder === correctSentence) {
+        result.textContent = "✅ Correct!";
+        result.style.color = "green";
+    } else {
+        result.textContent = "❌ Try again!";
+        result.style.color = "red";
+    }
+}
+
+// Reset
+function resetGame() {
+    loadWords();
+}
+
+// Init
+loadWords();
+</script>
+
+</body>
+</html>

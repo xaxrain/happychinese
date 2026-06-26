@@ -96,6 +96,15 @@ h2 {
       margin-bottom: 5px;
 }
 
+h1.pink{
+ 
+            color: rgb(188, 122, 132);
+}
+
+h2.pink{
+ 
+            color: rgb(188, 122, 132);
+}
 main h2.subtitle {
     font-family: 'Poppins', 'Raleway', sans-serif;
     color: rgb(150, 90, 100);

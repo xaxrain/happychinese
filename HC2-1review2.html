@@ -23,24 +23,105 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <STYLE>
 
-<title>template</title>
+dragh1 {
+        color: rgb(188, 122, 132);
+        margin-bottom: 5px;
+    }
+
+    p.instructions {
+        font-size: 1.1rem;
+        color: rgb(150, 90, 100);
+        margin-top: 0;
+    }
+
+    .game-container {
+        max-width: 500px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Word tiles */
+    .word {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        background-color: #fdf2f4;
+        border: 3px solid #f3d1d6;
+        border-radius: 10px;
+        cursor: grab;
+        font-weight: bold;
+        position: relative;
+    }
+
+    /* Pinyin tooltip */
+    .word:hover::after {
+        content: attr(data-pinyin);
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #e0f2fe;
+        color: #0369a1;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* Drop area */
+    .dropzone {
+        min-height: 70px;
+        border: 2px dashed #bae6fd;
+        background-color: #f0f9ff;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    button {
+        background-color: rgb(188, 122, 132); 
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    button:hover {
+        background-color: rgb(150, 90, 100);
+    }
+
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+  </STYLE>
+<title>HC2-1review2</title>
 </head>
 
 <body>
 
+      <!-- page-title -->
 <div class="page-title text-center mb-4">
   <div class="heading">
-  <h1>爸爸  
-妈妈  </h1>
+  <h1>HC2-1review2</h1>
 </div>
 </div>
+ 
  <main class="pagebody-800">
     <!-- VIDEO -->
     <div class="row align-items-stretch">
     <div class="col-12 mb-5">
       <div class="ratio ratio-16x9">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/kEz3MiRpRvA?si=ZMvKe9SyDNIzbCZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0z38T38Sv60?si=p21i8KvkvjEiRj3r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>          </div>
       </div>
     </div>
   </div>
@@ -48,136 +129,53 @@
 <section id="events" class="events section">
 
   <div class="container">
-    <div class="row">
-
-      <!-- Card 1 -->
-  <div class="col-12 mb-4" data-aos="fade-right">
-            <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">🎯 Learning Objectives</h5>
-<ul>
-<li class="mb-4" >Introduce my Family using “<strong>这是我.</strong>..” (Zhè shì wǒ... – This is my...).</li>
-<li class="mb-4" >Tell the difference between <strong>他</strong> (tā – he/him) and <strong>她</strong> (tā – she/her).</li>
-<li class="mb-4" >Answer the question “<strong>这是谁？</strong>” (Zhè shì shéi? – Who is this?)</li>
-<li class="mb-4" >I can confidently record my own voice at the end of the lesson.&nbsp;</li>
-</ul>
-
-          
-          </div>
-        </div>
-      </div>
+  
 <!-- Card 2 -->
-      <div class="col-12 mb-4" data-aos="fade-left">
+      <div class="row col-12 mb-4" data-aos="fade-left">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">🧠 Key Vocabulary</h5>
-            <iframe src="hc1-4-1 matching.html" width="100%" height="800px"
+            <h5 class="card-title">🧠 What is your surname?</h5>
+            <iframe src="hc2-1review2_drop.html" width="100%" height="600px"
               style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
               title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
           </div>
         </div>
       </div>
-            <!-- Card mattching -->
-
-             <!-- flash Card -->
-      <div class="col-12 mb-4" data-aos="fade-left">
+    
+       <!-- Card 3 -->
+             <div class="row col-12 mb-4" data-aos="fade-left">
         <div class="card">
           <div class="card-body">
-    
-            <iframe src="hc1-4-2flash.html" width="100%" height="600px"
+            <h5 class="card-title">🧠 I love my family (members)</h5>
+            <iframe src="hc2-1review2_drop2.html" width="100%" height="600px"
               style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
               title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
           </div>
         </div>
       </div>
-         <!-- drag Card -->
-               <div class="col-12 mb-4" data-aos="fade-left">
+     
+         <!-- Card 4 -->
+             <div class="row col-12 mb-4" data-aos="fade-left">
         <div class="card">
           <div class="card-body">
-    
-            <iframe src="hc1-4-3drag.html" width="100%" height="600px"
+            <h5 class="card-title">🧠 I love my family</h5>
+            <iframe src="hc2-1review2_drop3.html" width="100%" height="600px"
               style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
-              title="Flashcard Game" frameborder="0"></iframe>
+              title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
           </div>
         </div>
       </div>
-      <!-- ✅ Recorder Card -->
-      <div class="col-12 mb-4" data-aos="fade-right">
+        <!-- Card 4 -->
+             <div class="row col-12 mb-4" data-aos="fade-left">
         <div class="card">
           <div class="card-body">
-
-            <h5 class="card-title">🎤 Recording Activity</h5>
-
-<div class="container">
-    <div class="row">
-
-<p style="color: rgb(150, 90, 100); font-size: 1.1rem;">
-Read the sentences aloud and record yourself.
-</p>
-
-      <div class="col-6">
-        <div class="pinyin">zhè</div>
-        <div class="hanzi">这</div>
-
-        <div class="pinyin">zhè shì</div>
-        <div class="hanzi">这是</div>
-
-        <div class="pinyin">zhè shì wǒ bàba</div>
-        <div class="hanzi">这是我爸爸</div>
-<br>
-        <div class="pinyin">nà</div>
-        <div class="hanzi">那</div>
-
-        <div class="pinyin">nà shì</div>
-        <div class="hanzi">那是</div>
-
-        <div class="pinyin">nà shì wǒ māma</div>
-        <div class="hanzi">那是我妈妈</div>
-    </div>
-   <div class="col-6">
-        <div class="pinyin">zhè</div>
-        <div class="hanzi">这</div>
-
-        <div class="pinyin">zhè bú shì</div>
-        <div class="hanzi">这不是</div>
-
-        <div class="pinyin">zhè bú shì wǒ bàba</div>
-        <div class="hanzi">这不是我爸爸</div>
-<br>
-        <div class="pinyin">nà</div>
-        <div class="hanzi">那</div>
-
-        <div class="pinyin">nà bú shì</div>
-        <div class="hanzi">那不是</div>
-
-        <div class="pinyin">nà bú shì wǒ māma</div>
-        <div class="hanzi">那不是我妈妈</div>
-    </div>
-</div>
-</div></div>
-            <button id="startBtn" class="btn btn-success me-2">Start</button>
-            <button id="stopBtn" class="btn btn-danger me-2" disabled>Stop</button>
-            <button id="resetBtn" class="btn btn-secondary">Restart</button>
-
-            <div id="status" class="mt-3">
-              Ready to record.
-            </div>
-
-            <audio id="audioPlayer" controls class="mt-3 w-100"></audio>
-
-            <br>
-
-            <a id="downloadLink" style="display:none;">
-              💾 Download Recording
-            </a>
-
+            <h5 class="card-title">🧠 Bathurst is a good place.</h5>
+            <iframe src="HC2-1review2_drop4.html" width="100%" height="600px"
+              style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
+              title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
           </div>
         </div>
       </div>
-
-    </div>
-  </div>
-
 </section>
 </main>
 
