@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <STYLE>
+
+dragh1 {
+        color: rgb(188, 122, 132);
+        margin-bottom: 5px;
+    }
+
+    p.instructions {
+        font-size: 1.1rem;
+        color: rgb(150, 90, 100);
+        margin-top: 0;
+    }
+
+    .game-container {
+        max-width: 500px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    /* Word tiles */
+    .word {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 5px;
+        background-color: #fdf2f4;
+        border: 3px solid #f3d1d6;
+        border-radius: 10px;
+        cursor: grab;
+        font-weight: bold;
+        position: relative;
+    }
+
+    /* Pinyin tooltip */
+    .word:hover::after {
+        content: attr(data-pinyin);
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #e0f2fe;
+        color: #0369a1;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* Drop area */
+    .dropzone {
+        min-height: 70px;
+        border: 2px dashed #bae6fd;
+        background-color: #f0f9ff;
+        margin: 20px auto;
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    button {
+        background-color: rgb(188, 122, 132); 
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    button:hover {
+        background-color: rgb(150, 90, 100);
+    }
+
+    #result {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+  </STYLE>
+<title>hc2-2</title>
+</head>
+
+<body>
+
+      <!-- page-title -->
+<div class="page-title text-center mb-4">
+  <div class="heading">
+  <h1>hc2-2</h1>
+</div>
+</div>
+<main class="main">
+    <!-- VIDEO -->
+    <div class="row align-items-stretch">
+    <div class="col-12 mb-5">
+      <div class="ratio ratio-16x9">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XwRoj1Sl0po?si=49_KdRQN3dQT5jIG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+    </div>
+  </div>
+
+ <main class="pagebody-800">
+<section id="events" class="events section">
+
+  <div class="container">
+    <div class="row">
+
+      <!-- Card 1 -->
+  <div class="col-12 mb-4" data-aos="fade-right">
+            <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">🎯 Learning Objectives</h5>
+            <ul>
+               
+        
+            </ul>
+          </div>
+        </div>
+      </div>
+<!-- Card 2 -->
+ <h5>Sentence Patterns</h5>
+
+<h5><strong>1. Subject + 多大？ / 多大了？</strong></h5>
+
+<p><strong>Chinese:</strong> 你多大？</p>
+<p><strong>Pinyin:</strong> Nǐ duō dà?</p>
+<p><strong>Meaning:</strong> How old are you?</p>
+
+<p><strong>Pattern:</strong></p>
+<p><strong>Subject + 多大？</strong></p>
+
+<p><strong>Example:</strong></p>
+<ul>
+  <li><strong>你多大？</strong> — How old are you?</li>
+</ul>
+
+<hr>
+
+<h5><strong>2. Subject + 今年 + Number + 岁</strong></h3>
+
+<p><strong>Chinese:</strong> 我今年十一岁。</p>
+<p><strong>Pinyin:</strong> Wǒ jīnnián shíyī suì.</p>
+<p><strong>Meaning:</strong> I am eleven years old this year.</p>
+
+<p><strong>Pattern:</strong></p>
+<p><strong>Subject + 今年 + Number + 岁</strong></p>
+
+<p><strong>Examples:</strong></p>
+<ul>
+  <li><strong>我今年八岁。</strong> — I am eight years old this year.</li>
+  <li><strong>他今年十五岁。</strong> — He is fifteen years old this year.</li>
+</ul>
+
+<hr>
+
+<h5><strong>3. A + 比 + B + Adjective</strong></h5>
+
+<p><strong>Chinese:</strong> 她比我大。</p>
+<p><strong>Pinyin:</strong> Tā bǐ wǒ dà.</p>
+<p><strong>Meaning:</strong> She is older than me.</p>
+
+<p><strong>Pattern:</strong></p>
+<p><strong>A + 比 + B + Adjective</strong></p>
+
+<p><strong>Examples:</strong></p>
+<ul>
+  <li><strong>他比我高。</strong> — He is taller than me.</li>
+  <li><strong>我比你小。</strong> — I am younger than you.</li>
+  <li><strong>哥哥比妹妹大。</strong> — The older brother is older than the younger sister.</li>
+</ul>
+
+<p><strong>Note:</strong> When comparing ages, <strong>大</strong> means <strong>older</strong> and <strong>小</strong> means <strong>younger</strong>.</p>
+
+<hr>
+
+<h5><strong>4. Subject + 会 + Verb + Object</strong></h5>
+
+<p><strong>Chinese:</strong> 我会说英语。</p>
+<p><strong>Pinyin:</strong> Wǒ huì shuō Yīngyǔ.</p>
+<p><strong>Meaning:</strong> I can speak English.</p>
+
+<p><strong>Pattern:</strong></p>
+<p><strong>Subject + 会 + Verb + Object</strong></p>
+
+<p><strong>Examples:</strong></p>
+<ul>
+  <li><strong>我会说汉语。</strong> — I can speak Chinese.</li>
+  <li><strong>他会游泳。</strong> — He can swim.</li>
+  <li><strong>你会开车吗？</strong> — Can you drive?</li>
+</ul>
+
+<hr>
+
+<h5><strong>5. Subject + 很 + Adjective</strong></h5>
+
+<p><strong>Chinese:</strong> 你的汉语很好。</p>
+<p><strong>Pinyin:</strong> Nǐ de Hànyǔ hěn hǎo.</p>
+<p><strong>Meaning:</strong> Your Chinese is very good.</p>
+
+<p><strong>Pattern:</strong></p>
+<p><strong>Subject + 很 + Adjective</strong></p>
+
+<p><strong>Examples:</strong></p>
+<ul>
+  <li><strong>我很好。</strong> — I am very well.</li>
+  <li><strong>她很漂亮。</strong> — She is very beautiful.</li>
+  <li><strong>今天很热。</strong> — Today is very hot.</li>
+</ul>
+
+<p><strong>Note:</strong> In Chinese, <strong>很</strong> is often used before an adjective even when it does not mean "very". It serves as a natural link between the subject and the adjective.</p>
+
+<hr>
+
+<h5><strong>Summary</strong></h5>
+
+<ul>
+  <li><strong>Subject + 多大？</strong> — Ask someone's age.</li>
+  <li><strong>Subject + 今年 + Number + 岁</strong> — State someone's age.</li>
+  <li><strong>A + 比 + B + Adjective</strong> — Compare two people or things.</li>
+  <li><strong>Subject + 会 + Verb + Object</strong> — Express ability or learned skills.</li>
+  <li><strong>Subject + 很 + Adjective</strong> — Describe people, things, or situations.</li>
+</ul>
+      <div class="col-12 mb-4" data-aos="fade-left">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">🧠 Key Vocabulary</h5>
+            <iframe src="hc2-1-1 matching.html" width="100%" height="700px"
+              style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
+              title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+      <!-- Drag & Drop -->
+      <div class="col-12 mb-4" data-aos="fade-left">
+        <div class="card">
+          <div class="card-body">
+
+          <h1 class="dragh1">句子排序 Sentence Builder</h1>
+<p class="instructions">Drag the words to form a correct sentence</p>
+
+<div class="game-container">
+
+    <div id="wordBank"></div>
+
+    <div class="dropzone" id="dropzone">
+        Drop words here
+    </div>
+
+    <button onclick="checkAnswer()">Check</button>
+    <button onclick="resetGame()">Reset</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+// Data
+const wordsData = [
+  
+{ text: "昨天", pinyin: "zuó tiān" },
+{ text: "下班", pinyin: "xià bān" },
+{ text: "回到", pinyin: "huí dào" },
+{ text: "家", pinyin: "jiā" },
+{ text: "已经", pinyin: "yǐ jīng" },
+{ text: "十点", pinyin: "shí diǎn" },
+{ text: "了", pinyin: "le" }
+];
+
+// Shuffle
+function shuffle(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+let dragged = null;
+
+function loadWords() {
+    const bank = document.getElementById("wordBank");
+    const dropzone = document.getElementById("dropzone");
+
+    bank.innerHTML = "";
+    dropzone.innerHTML = "Drop words here";
+
+    let shuffled = shuffle([...wordsData]);
+
+    shuffled.forEach(item => {
+        let div = document.createElement("div");
+        div.className = "word";
+        div.textContent = item.text;
+        div.setAttribute("draggable", "true");
+        div.setAttribute("data-pinyin", item.pinyin);
+
+        div.addEventListener("dragstart", () => dragged = div);
+
+        bank.appendChild(div);
+    });
+
+    document.getElementById("result").textContent = "";
+}
+
+// Drop behaviour
+const dropzone = document.getElementById("dropzone");
+
+dropzone.addEventListener("dragover", (e) => e.preventDefault());
+
+dropzone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    if (dragged) dropzone.appendChild(dragged);
+});
+
+// Check answer
+function checkAnswer() {
+    const words = document.querySelectorAll("#dropzone .word");
+    let sentence = "";
+
+    words.forEach(word => sentence += word.textContent);
+
+    if (sentence === "昨天下班回到家已经十点了") {
+        result.textContent = "✅ Correct!";
+        result.style.color = "green";
+    } else {
+        result.textContent = "❌ Try again!";
+        result.style.color = "red";
+    }
+}
+
+// Reset
+function resetGame() {
+    loadWords();
+}
+
+// Init
+loadWords();
+</script>
+          </div>
+        </div>
+      </div>
+      <!-- ✅ Recorder Card -->
+      <div class="col-12 mb-4" data-aos="fade-right">
+        <div class="card">
+          <div class="card-body">
+
+            <h5 class="card-title">🎤 Recording Activity</h5>
+
+            <button id="startBtn" class="btn btn-success me-2">Start</button>
+            <button id="stopBtn" class="btn btn-danger me-2" disabled>Stop</button>
+            <button id="resetBtn" class="btn btn-secondary">Restart</button>
+
+            <div id="status" class="mt-3">
+              Ready to record.
+            </div>
+
+            <audio id="audioPlayer" controls class="mt-3 w-100"></audio>
+
+            <br>
+
+            <a id="downloadLink" style="display:none;">
+              💾 Download Recording
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+</main>
+
+<script>
+let mediaRecorder;
+let audioChunks = [];
+
+const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const status = document.getElementById("status");
+const audioPlayer = document.getElementById("audioPlayer");
+const downloadLink = document.getElementById("downloadLink");
+
+startBtn.addEventListener("click", async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+            const audioURL = URL.createObjectURL(audioBlob);
+
+            audioPlayer.src = audioURL;
+
+            const fileName = "HSK_Lesson7_" +
+                new Date().toISOString().replace(/[:.]/g, "-") +
+                ".webm";
+
+            downloadLink.href = audioURL;
+            downloadLink.download = fileName;
+            downloadLink.style.display = "inline-block";
+
+            status.textContent = "Recording complete.";
+        };
+
+        mediaRecorder.start();
+
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+        status.textContent = "Recording...";
+
+    } catch (error) {
+        status.textContent = "Microphone blocked. Allow microphone access.";
+        console.error(error);
+    }
+});
+
+stopBtn.addEventListener("click", () => {
+    mediaRecorder.stop();
+    mediaRecorder.stream.getTracks().forEach(track => track.stop());
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+});
+
+resetBtn.addEventListener("click", () => {
+    audioPlayer.src = "";
+    downloadLink.style.display = "none";
+    status.textContent = "Ready to record.";
+    audioChunks = [];
+    startBtn.disabled = false;
+    stopBtn.disabled = true;
+});
+</script>
+<!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
