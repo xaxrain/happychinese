@@ -2126,7 +2126,6 @@ section,
 --------------------------------------------------------------*/
 .events .card {
   background-color: var(--background-color);
-  border: 0;
   padding: 0 30px;
   margin-bottom: 60px;
   position: relative;
