@@ -112,16 +112,19 @@ dragh1 {
       <!-- page-title -->
 <div class="page-title text-center mb-4">
   <div class="heading">
-  <h1>xx</h1>
+  <h1>HC 1-5 我有一只小猫</h1>
 </div>
 </div>
  <main class="pagebody-800">
     <!-- VIDEO -->
     <div class="row align-items-stretch">
     <div class="col-12 mb-5">
+  <div class="ratio ratio-16x9  mb-5">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/VA7kU9-ra08?si=CfLHc1wYYjACkU0q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
       <div class="ratio ratio-16x9">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/kEz3MiRpRvA?si=ZMvKe9SyDNIzbCZ4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IghcTI0yJC0?si=yZI4btI7M1dOR3TS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
     </div>
   </div>
 
@@ -137,7 +140,15 @@ dragh1 {
           <div class="card-body">
             <h5 class="card-title">🎯 Learning Objectives</h5>
             <ul>
-              <li>xxx xxx</li>
+             
+  <li>Master the pronunciation and usage of <strong>有 (yǒu)</strong> to express "to have".</li>
+  <li>Learn essential animal vocabulary: <strong>猫 (māo - cat)</strong> and <strong>狗 (gǒu - dog)</strong>.</li>
+  <li>Understand how to use the measure word <strong>只 (zhī)</strong> for small animals.</li>
+  <li>Count quantities from 1 to 6, including the special usage of <strong>两 (liǎng)</strong> for "two" when paired with a measure word.</li>
+  <li>Form basic sentences describing animal ownership using the structure: <em>Subject + 有 + Quantity + 只 + Animal</em>.</li>
+  <li>Ask and answer simple yes/no question patterns using <strong>吗 (ma)</strong>.</li>
+  <li>Practice pronunciation and tonal distinctions for initials <strong>g</strong>, <strong>k</strong>, and <strong>h</strong>.</li>
+</ul>
         
             </ul>
           </div>
@@ -145,118 +156,23 @@ dragh1 {
       </div>
 <!-- Card 2 -->
       <div class="col-12 mb-4" data-aos="fade-left">
-        <div class="card">
-          <div class="card-body">
+        
+        
             <h5 class="card-title">🧠 Key Vocabulary</h5>
-            <iframe src="hc2-1-1 matching.html" width="100%" height="700px"
+            <iframe src="hc1-5-flashcard.html" width="100%" height="700px"
               style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
               title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
-          </div>
-        </div>
+        
       </div>
       <!-- Drag & Drop -->
       <div class="col-12 mb-4" data-aos="fade-left">
-        <div class="card">
-          <div class="card-body">
+        
 
-          <h1 class="dragh1">句子排序 Sentence Builder</h1>
-<p class="instructions">Drag the words to form a correct sentence</p>
-
-<div class="game-container">
-
-    <div id="wordBank"></div>
-
-    <div class="dropzone" id="dropzone">
-        Drop words here
-    </div>
-
-    <button onclick="checkAnswer()">Check</button>
-    <button onclick="resetGame()">Reset</button>
-
-    <div id="result"></div>
-
-</div>
-
-<script>
-// Data
-const wordsData = [
-  
-{ text: "昨天", pinyin: "zuó tiān" },
-{ text: "下班", pinyin: "xià bān" },
-{ text: "回到", pinyin: "huí dào" },
-{ text: "家", pinyin: "jiā" },
-{ text: "已经", pinyin: "yǐ jīng" },
-{ text: "十点", pinyin: "shí diǎn" },
-{ text: "了", pinyin: "le" }
-];
-
-// Shuffle
-function shuffle(array) {
-    return array.sort(() => Math.random() - 0.5);
-}
-
-let dragged = null;
-
-function loadWords() {
-    const bank = document.getElementById("wordBank");
-    const dropzone = document.getElementById("dropzone");
-
-    bank.innerHTML = "";
-    dropzone.innerHTML = "Drop words here";
-
-    let shuffled = shuffle([...wordsData]);
-
-    shuffled.forEach(item => {
-        let div = document.createElement("div");
-        div.className = "word";
-        div.textContent = item.text;
-        div.setAttribute("draggable", "true");
-        div.setAttribute("data-pinyin", item.pinyin);
-
-        div.addEventListener("dragstart", () => dragged = div);
-
-        bank.appendChild(div);
-    });
-
-    document.getElementById("result").textContent = "";
-}
-
-// Drop behaviour
-const dropzone = document.getElementById("dropzone");
-
-dropzone.addEventListener("dragover", (e) => e.preventDefault());
-
-dropzone.addEventListener("drop", (e) => {
-    e.preventDefault();
-    if (dragged) dropzone.appendChild(dragged);
-});
-
-// Check answer
-function checkAnswer() {
-    const words = document.querySelectorAll("#dropzone .word");
-    let sentence = "";
-
-    words.forEach(word => sentence += word.textContent);
-
-    if (sentence === "昨天下班回到家已经十点了") {
-        result.textContent = "✅ Correct!";
-        result.style.color = "green";
-    } else {
-        result.textContent = "❌ Try again!";
-        result.style.color = "red";
-    }
-}
-
-// Reset
-function resetGame() {
-    loadWords();
-}
-
-// Init
-loadWords();
-</script>
-          </div>
-        </div>
+           <iframe src="hc1-5_drop.html" width="100%" height="700px"
+6
+              style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
+              title="Kuaile Hanyu Drag & Drop Game" frameborder="0"></iframe>
+           
       </div>
       <!-- ✅ Recorder Card -->
       <div class="col-12 mb-4" data-aos="fade-right">
