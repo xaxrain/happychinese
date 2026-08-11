@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Get the user input from the terminal (e.g., node generate.js HC-1 or node generate.js HC-1-Review)
+// Get the user inp
+//or node generate.js HC-1-Review)
 const inputName = process.argv[2]; 
 
 if (!inputName) {
