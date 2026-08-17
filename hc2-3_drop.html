@@ -117,11 +117,14 @@
 
 <script>
 // Master Data set in the target correct order
-const wordsData = [
-    {text: "你", pinyin: "nǐ"},
-    {text: "姓", pinyin: "xìng"},
-    {text: "什么?", pinyin: "shén me"}
-];
+const wordsData =
+[
+  {text: "我", pinyin: "wǒ"},
+  {text: "早上", pinyin: "zǎo shang"},
+  {text: "7点", pinyin: "qī diǎn"},
+  {text: "半", pinyin: "bàn"},
+  {text: "起床", pinyin: "qǐ chuáng"}
+]
 
 // Dynamic variable generating the target sentence directly from wordsData
 const correctSentence = wordsData.map(item => item.text).join("");
