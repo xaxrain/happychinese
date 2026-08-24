@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -12,7 +13,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,280 +27,291 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <STYLE>
-
-dragh1 {
-        color: rgb(188, 122, 132);
-        margin-bottom: 5px;
+    dragh1 {
+      color: rgb(188, 122, 132);
+      margin-bottom: 5px;
     }
 
     p.instructions {
-        font-size: 1.1rem;
-        color: rgb(150, 90, 100);
-        margin-top: 0;
+      font-size: 1.1rem;
+      color: rgb(150, 90, 100);
+      margin-top: 0;
     }
 
     .game-container {
-        max-width: 500px;
-        margin: 40px auto;
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
     /* Word tiles */
     .word {
-        display: inline-block;
-        padding: 10px 15px;
-        margin: 5px;
-        background-color: #fdf2f4;
-        border: 3px solid #f3d1d6;
-        border-radius: 10px;
-        cursor: grab;
-        font-weight: bold;
-        position: relative;
+      display: inline-block;
+      padding: 10px 15px;
+      margin: 5px;
+      background-color: #fdf2f4;
+      border: 3px solid #f3d1d6;
+      border-radius: 10px;
+      cursor: grab;
+      font-weight: bold;
+      position: relative;
     }
 
     /* Pinyin tooltip */
     .word:hover::after {
-        content: attr(data-pinyin);
-        position: absolute;
-        bottom: 120%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #e0f2fe;
-        color: #0369a1;
-        padding: 5px 8px;
-        border-radius: 5px;
-        font-size: 12px;
-        white-space: nowrap;
+      content: attr(data-pinyin);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      white-space: nowrap;
     }
 
     /* Drop area */
     .dropzone {
-        min-height: 70px;
-        border: 2px dashed #bae6fd;
-        background-color: #f0f9ff;
-        margin: 20px auto;
-        padding: 15px;
-        border-radius: 10px;
+      min-height: 70px;
+      border: 2px dashed #bae6fd;
+      background-color: #f0f9ff;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 10px;
     }
 
     button {
-        background-color: rgb(188, 122, 132); 
-        color: white;
-        border: none;
-        padding: 10px 25px;
-        font-size: 1rem;
-        border-radius: 5px;
-        cursor: pointer;
-        margin: 5px;
+      background-color: rgb(188, 122, 132);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
     }
 
     button:hover {
-        background-color: rgb(150, 90, 100);
+      background-color: rgb(150, 90, 100);
     }
 
     #result {
-        margin-top: 15px;
-        font-weight: bold;
-        font-size: 1.2rem;
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 1.2rem;
     }
   </STYLE>
-<title>template</title>
+  <title>template</title>
 </head>
 
 <body>
 
-      <!-- page-title -->
-<div class="page-title text-center mb-4">
-  <div class="heading">
-  <h1>HC 1-5 我有一只小猫</h1>
-</div>
-</div>
- <main class="pagebody-800">
+  <!-- page-title -->
+  <div class="page-title text-center mb-4">
+    <div class="heading">
+      <h1>HC 1-5 我有一只小猫</h1>
+    </div>
+  </div>
+  <main class="pagebody-800">
     <!-- VIDEO -->
     <div class="row align-items-stretch">
-    <div class="col-12 mb-5">
-  <div class="ratio ratio-16x9  mb-5">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/VA7kU9-ra08?si=CfLHc1wYYjACkU0q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <div class="col-12 mb-5">
+        <div class="ratio ratio-16x9  mb-5">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/VA7kU9-ra08?si=CfLHc1wYYjACkU0q"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
 
-      <div class="ratio ratio-16x9">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/IghcTI0yJC0?si=yZI4btI7M1dOR3TS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+        <div class="ratio ratio-16x9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/IghcTI0yJC0?si=yZI4btI7M1dOR3TS"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
-  </div>
 
-<main class="main">
-<section id="events" class="events section">
+    <main class="main">
+      <section id="events" class="events section">
 
-  <div class="container">
-    <div class="row">
+        <div class="container">
+          <div class="row">
 
-      <!-- Card 1 -->
-  <div class="col-12 mb-4" data-aos="fade-right">
-            <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">🎯 Learning Objectives</h5>
-            <ul>
-             
-  <li>Master the pronunciation and usage of <strong>有 (yǒu)</strong> to express "to have".</li>
-  <li>Learn essential animal vocabulary: <strong>猫 (māo - cat)</strong> and <strong>狗 (gǒu - dog)</strong>.</li>
-  <li>Understand how to use the measure word <strong>只 (zhī)</strong> for small animals.</li>
-  <li>Count quantities from 1 to 6, including the special usage of <strong>两 (liǎng)</strong> for "two" when paired with a measure word.</li>
-  <li>Form basic sentences describing animal ownership using the structure: <em>Subject + 有 + Quantity + 只 + Animal</em>.</li>
-  <li>Ask and answer simple yes/no question patterns using <strong>吗 (ma)</strong>.</li>
-  <li>Practice pronunciation and tonal distinctions for initials <strong>g</strong>, <strong>k</strong>, and <strong>h</strong>.</li>
-</ul>
-        
-            </ul>
-          </div>
-        </div>
-      </div>
-<!-- Card 2 -->
-      <div class="col-12 mb-4" data-aos="fade-left">
-        
-        
-            <h5 class="card-title">🧠 Key Vocabulary</h5>
-            <iframe src="hc1-5-flashcard.html" width="100%" height="700px"
-              style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
-              title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
-        
-      </div>
-      <!-- Drag & Drop -->
-      <div class="col-12 mb-4" data-aos="fade-left">
-        
+            <!-- Card 1 -->
+            <div class="col-12 mb-4" data-aos="fade-right">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">🎯 Learning Objectives</h5>
+                  <ul>
 
-           <iframe src="hc1-5_drop.html" width="100%" height="700px"
-6
-              style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
-              title="Kuaile Hanyu Drag & Drop Game" frameborder="0"></iframe>
-           
-      </div>
-      <!-- ✅ Recorder Card -->
-      <div class="col-12 mb-4" data-aos="fade-right">
-        <div class="card">
-          <div class="card-body">
+                    <li>Master the pronunciation and usage of <strong>有 (yǒu)</strong> to express "to have".</li>
+                    <li>Learn essential animal vocabulary: <strong>猫 (māo - cat)</strong> and <strong>狗 (gǒu -
+                        dog)</strong>.</li>
+                    <li>Understand how to use the measure word <strong>只 (zhī)</strong> for small animals.</li>
+                    <li>Count quantities from 1 to 6, including the special usage of <strong>两 (liǎng)</strong> for
+                      "two" when paired with a measure word.</li>
+                    <li>Form basic sentences describing animal ownership using the structure: <em>Subject + 有 + Quantity
+                        + 只 + Animal</em>.</li>
+                    <li>Ask and answer simple yes/no question patterns using <strong>吗 (ma)</strong>.</li>
+                    <li>Practice pronunciation and tonal distinctions for initials <strong>g</strong>,
+                      <strong>k</strong>, and <strong>h</strong>.</li>
+                  </ul>
 
-            <h5 class="card-title">🎤 Recording Activity</h5>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="col-12 mb-4" data-aos="fade-left">
 
-            <button id="startBtn" class="btn btn-success me-2">Start</button>
-            <button id="stopBtn" class="btn btn-danger me-2" disabled>Stop</button>
-            <button id="resetBtn" class="btn btn-secondary">Restart</button>
 
-            <div id="status" class="mt-3">
-              Ready to record.
+              <h5 class="card-title">🧠 Key Vocabulary</h5>
+              <iframe src="hc1-5-flashcard.html" width="100%" height="700px"
+                style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
+                title="Kuaile Hanyu Flashcard Game" frameborder="0"></iframe>
+
+            </div>
+            <!-- Drag & Drop -->
+            <div class="col-12 mb-4" data-aos="fade-left">
+
+
+              <iframe src="hc1-5_drop.html" width="100%" height="700px" 6
+                style="border: none; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);"
+                title="Kuaile Hanyu Drag & Drop Game" frameborder="0"></iframe>
+
+            </div>
+            <!-- ✅ Recorder Card -->
+            <div class="col-12 mb-4" data-aos="fade-right">
+              <div class="card">
+                <div class="card-body">
+
+                  <h5 class="card-title">🎤 Recording Activity</h5>
+
+                  <button id="startBtn">🎤 Start</button>
+                  <button id="stopBtn" disabled>⏹️ Stop</button>
+                  <button id="resetBtn">🔄 Restart</button>
+
+                  <div id="status" class="mt-3">
+                    Ready to record.
+                  </div>
+
+                  <audio id="audioPlayer" controls class="mt-3 w-100"></audio>
+
+                  <br>
+
+                  <a id="downloadLink" style="display:none;">
+                    💾 Download Recording
+                  </a>
+
+                </div>
+              </div>
             </div>
 
-            <audio id="audioPlayer" controls class="mt-3 w-100"></audio>
-
-            <br>
-
-            <a id="downloadLink" style="display:none;">
-              💾 Download Recording
-            </a>
-
           </div>
         </div>
-      </div>
 
-    </div>
-  </div>
+      </section>
+    </main>
 
-</section>
-</main>
+    <script>
+      let mediaRecorder;
+      let audioChunks = [];
 
-<script>
-let mediaRecorder;
-let audioChunks = [];
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const resetBtn = document.getElementById("resetBtn");
 
-const startBtn = document.getElementById("startBtn");
-const stopBtn = document.getElementById("stopBtn");
-const resetBtn = document.getElementById("resetBtn");
+      const status = document.getElementById("status");
+      const audioPlayer = document.getElementById("audioPlayer");
+      const downloadLink = document.getElementById("downloadLink");
 
-const status = document.getElementById("status");
-const audioPlayer = document.getElementById("audioPlayer");
-const downloadLink = document.getElementById("downloadLink");
+      startBtn.addEventListener("click", async () => {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-startBtn.addEventListener("click", async () => {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          audioChunks = [];
 
-        mediaRecorder = new MediaRecorder(stream);
-        audioChunks = [];
-
-        mediaRecorder.ondataavailable = event => {
+          mediaRecorder.ondataavailable = event => {
             audioChunks.push(event.data);
-        };
+          };
 
-        mediaRecorder.onstop = () => {
+          mediaRecorder.onstop = () => {
             const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
             const audioURL = URL.createObjectURL(audioBlob);
 
             audioPlayer.src = audioURL;
 
             const fileName = "HSK_Lesson7_" +
-                new Date().toISOString().replace(/[:.]/g, "-") +
-                ".webm";
+              new Date().toISOString().replace(/[:.]/g, "-") +
+              ".webm";
 
             downloadLink.href = audioURL;
             downloadLink.download = fileName;
             downloadLink.style.display = "inline-block";
 
             status.textContent = "Recording complete.";
-        };
+          };
 
-        mediaRecorder.start();
+          mediaRecorder.start();
 
-        startBtn.disabled = true;
-        stopBtn.disabled = false;
-        status.textContent = "Recording...";
+          startBtn.disabled = true;
+          stopBtn.disabled = false;
+          status.textContent = "Recording...";
 
-    } catch (error) {
-        status.textContent = "Microphone blocked. Allow microphone access.";
-        console.error(error);
-    }
-});
+        } catch (error) {
+          status.textContent = "Microphone blocked. Allow microphone access.";
+          console.error(error);
+        }
+      });
 
-stopBtn.addEventListener("click", () => {
-    mediaRecorder.stop();
-    mediaRecorder.stream.getTracks().forEach(track => track.stop());
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
-});
+      stopBtn.addEventListener("click", () => {
+        mediaRecorder.stop();
+        mediaRecorder.stream.getTracks().forEach(track => track.stop());
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      });
 
-resetBtn.addEventListener("click", () => {
-    audioPlayer.src = "";
-    downloadLink.style.display = "none";
-    status.textContent = "Ready to record.";
-    audioChunks = [];
-    startBtn.disabled = false;
-    stopBtn.disabled = true;
-});
-</script>
-<!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      resetBtn.addEventListener("click", () => {
+        audioPlayer.src = "";
+        downloadLink.style.display = "none";
+        status.textContent = "Ready to record.";
+        audioChunks = [];
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      });
+    </script>
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-</script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    </script>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
